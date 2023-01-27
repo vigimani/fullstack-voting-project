@@ -82,7 +82,7 @@ export default function Home() {
       abi,
       provider
     );
-    const filter = { address: contractAddress, fromBlock: 0 };
+    const filter = { address: contractAddress, fromBlock: 8387444 };
     let events = await contract.queryFilter(filter, 0);
     let phase = 0;
     events.forEach((event) => {
