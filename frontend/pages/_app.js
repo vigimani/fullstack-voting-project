@@ -5,12 +5,12 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { hardhat } from 'wagmi/chains';
+import { hardhat, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { ChakraProvider } from '@chakra-ui/react'
 
 const { chains, provider } = configureChains(
-  [hardhat],
+  [goerli],
   [publicProvider()]
 );
 const { connectors } = getDefaultWallets({
