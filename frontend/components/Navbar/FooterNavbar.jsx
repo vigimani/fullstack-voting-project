@@ -68,16 +68,7 @@ export default function FooterNavBar({}) {
                       py={"12px"}
                       h="48px"
                         >
-                      {/* <IconButton
-                        aria-label="toggle theme"
-                        boxShadow="dark-lg"
-                        borderColor="#red"
-                        border="2px"
-                        rounded="full"
-                        size="lg"
-                        // onClick={}
-                        icon={}
-                      /> */}<Icon w="20px" as={FaWallet} />
+                    <Icon w="20px" as={FaWallet} />
                     </MenuButton>
                     <MenuList p="16px 8px">
                       <Flex flexDirection="column">
@@ -125,7 +116,6 @@ export default function FooterNavBar({}) {
                               style={{ width: 15, height: 15 }}
                             />
                           )}
-
                           <Flex ml="1rem" flexDirection="column">
                             <Text fontSize="14px" mb="5px">
                               <Text fontWeight="bold" fontSize="14px" as="span">
@@ -138,7 +128,6 @@ export default function FooterNavBar({}) {
                       </Flex>
                     </MenuList>
                   </Menu>
-
                 </>
               )}
             </>

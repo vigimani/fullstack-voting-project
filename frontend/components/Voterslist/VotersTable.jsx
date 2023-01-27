@@ -9,12 +9,19 @@ import {
   Th,
   Thead,
   Tr,
-  Spinner
+  Spinner,
+  Heading,
 } from "@chakra-ui/react";
 import { VotersTableRow } from "./VotersTableRow";
 import Addvoter from "./Addvoter";
 
-export default function VotersTable({voterslist, setVoterslist, listhasvoted}) {
+export default function VotersTable({
+  phase,
+  voterslist,
+  setVoterslist,
+  listhasvoted,
+  isOwner
+}) {
   //Set the adequate height for card
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
@@ -29,17 +36,31 @@ export default function VotersTable({voterslist, setVoterslist, listhasvoted}) {
       false
     );
   }, []);
-
-  const captions = ["Adress", "Has Voted"];
+  const captions = ["Adress", "Voted"];
   return (
     <Card
       w="49.5%"
       borderRadius="20"
-      h={dimensions.height - 109 - 91.59 - 541.2 + 433.61 + 85}
+      h={dimensions.height - 109 - 116.58 - 541.2 + 433.61 + 85}
       overflowX={{ sm: "scroll", xl: "hidden" }}
     >
       <CardHeader w="100%" p="6px 0px 2px 0px">
-        <Addvoter setVoterslist={setVoterslist} />
+        {phase == 0 && isOwner? (
+          <Addvoter setVoterslist={setVoterslist} />
+        ) : (
+          <Heading
+            mt="1rem"
+            ml="4"
+            fontSize="xl"
+            color={"gray.700"}
+            fontWeight={"extrabold"}
+            mb="1rem"
+            as="h3"
+            size="lg"
+          >
+            List of Voters
+          </Heading>
+        )}
       </CardHeader>
       <CardBody>
         <Table variant="simple" color={"gray.700"}>
@@ -62,7 +83,9 @@ export default function VotersTable({voterslist, setVoterslist, listhasvoted}) {
                   listhasvoted={listhasvoted}
                   subaddress={
                     voter.address ? (
-                      voter.address.substring(0,5)+"..."+voter.address.substring(voter.address.length - 4)
+                      voter.address.substring(0, 5) +
+                      "..." +
+                      voter.address.substring(voter.address.length - 4)
                     ) : (
                       <Spinner
                         size="md"

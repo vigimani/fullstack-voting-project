@@ -22,10 +22,10 @@ export default function Welcome({ children }) {
                   flexDirection="column"
                 >
                   <Flex fontWeight={"extrabold"} mb="3rem">
-                    <Heading>Welcome to the Voting Game</Heading>
+                    <Heading>Welcome to Voting Game</Heading>
                   </Flex>
                   <Text mb="5rem">
-
+                      If you are not registered as a player you can still watch the game
                   </Text>
 
                   <Flex

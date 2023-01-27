@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useToast, Flex, Text, ModalCloseButton, EnvironmentProvider } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Contract from "../../backend/artifacts/contracts/Voting.sol/Voting";
@@ -10,10 +10,6 @@ import Mainpanel from "@/components/Mainpanel/Mainpanel";
 export default function Home() {
   const { address, isConnected } = useAccount();
   const provider = useProvider();
-  const toast = useToast();
-  const [isOwner, setIsOwner] = useState(false);
-  const[phase, setPhase]=useState()
-
   const account = useAccount({
     onConnect({ address, connector, isReconnected }) {
       console.log("Connected", { address, connector, isReconnected });
@@ -21,30 +17,49 @@ export default function Home() {
   });
   const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS;
 
+
+  const toast = useToast();
+
+  //Game ownership and workflow
+  const [isOwner, setIsOwner] = useState(false);
+  const[phase, setPhase]=useState()
+
+
+
   useEffect(() => {
     if (isConnected) {
       checkOwner();
-      getStatusOfTheGame();
       toast({
         title: "Connected",
         description:
-          "Welcome to my Voting Dapp, you are connected with the address : " +
+          "Welcome to the Voting Dapp, you are connected with the address : " +
           address,
         status: "success",
         duration: 5000,
         isClosable: true,
       });
     }
-  }, [isConnected]);
-
-
-  useEffect(() => {
-    if (isConnected) {
-      checkOwner();
-      getStatusOfTheGame();
-    }
   }, [address, isConnected]);
 
+  useEffect(()=>{
+    checkOwner();
+    getStatusOfTheGame()
+  }, [])
+
+  useEffect(() => {
+    const contract = new ethers.Contract(
+      contractAddress,
+      Contract.abi,
+      provider
+    );
+    contract.on("WorkflowStatusChange", () => {
+      getStatusOfTheGame()
+    });
+    return () => {
+      contract.removeAllListeners();
+    };
+
+  }, []);
   const checkOwner = async () => {
     const contract = await new ethers.Contract(
       contractAddress,
@@ -76,6 +91,7 @@ export default function Home() {
     setPhase(phase)
   }
 
+
   return (
     <>
       <Head>
@@ -85,7 +101,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout bg ="#e2e6f7" isOwner={isOwner} phase={phase} setPhase={setPhase}>
-        <Mainpanel/>
+        <Mainpanel  isOwner={isOwner} phase={phase}/>
       </Layout>
     </>
   );

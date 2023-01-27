@@ -14,13 +14,12 @@ import {
   NotAllowedIcon,
 } from "@chakra-ui/icons";
 import { ImNext } from "react-icons/im";
-import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
-import { useAccount, useProvider, useSigner } from "wagmi";
+import { useSigner } from "wagmi";
 import { wfstatus } from "../Utils/helper";
 
-export const Workflowstatus = ({ phase, setPhase }) => {
+export const Workflowstatus = ({ isOwner, phase, setPhase }) => {
   const { data: signer } = useSigner();
   const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS;
 
@@ -83,7 +82,11 @@ export const Workflowstatus = ({ phase, setPhase }) => {
                 {phase > index ? (
                   <ListIcon as={CheckCircleIcon} color="green.500" />
                 ) : phase == index ? (
-                  <ListIcon as={SettingsIcon} color="green.500" />
+                  phase == 5 ? (
+                    <ListIcon as={CheckCircleIcon} color="green.500" />
+                  ) : (
+                    <ListIcon as={SettingsIcon} color="green.500" />
+                  )
                 ) : phase == index - 1 ? (
                   <ListIcon as={ImNext} color="blue.500" />
                 ) : (
@@ -96,17 +99,20 @@ export const Workflowstatus = ({ phase, setPhase }) => {
         })}
       </List>
       <Flex h="100%" justifyContent="center">
-        <Button
-          color="white"
-          bg="#1f222e"
-          // leftIcon={<ImNext />}
-          mt="2"
-          borderRadius="10"
-          mr="4"
-          onClick={() => nextphase()}
-        >
-          Next step
-        </Button>
+        {phase != 5 && isOwner ? (
+          <Button
+            color="white"
+            bg="#1f222e"
+            mt="2"
+            borderRadius="10"
+            mr="4"
+            onClick={() => nextphase()}
+          >
+            Next step
+          </Button>
+        ) : (
+          <Text></Text>
+        )}
       </Flex>
     </Box>
   );

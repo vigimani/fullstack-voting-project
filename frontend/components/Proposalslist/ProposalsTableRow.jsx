@@ -56,11 +56,7 @@ export function ProposalsTableRow(props) {
       setIsloading(false);
     }
 
-    const { id, description, listhasvoted } = props;
-
-    console.log(listhasvoted)
-
-    console.log(listhasvoted.map((e) => e.address).indexOf("dd"))
+    const { id, description, listhasvoted, phase } = props;
 
     return (
 
@@ -103,7 +99,7 @@ export function ProposalsTableRow(props) {
         ):
         (        
         <Td>
-        <Button p="0px" bg="transparent" variant="no-hover" onClick={()=> setMyvote(id)}>
+          {phase >2 ? (        <Button p="0px" bg="transparent" variant="no-hover" onClick={()=> setMyvote(id)}>
           <Text
             fontSize="md"
             color="gray.400"
@@ -112,7 +108,8 @@ export function ProposalsTableRow(props) {
           >
             Vote
           </Text>
-        </Button>
+        </Button>):(<Text></Text>)}
+
         </Td>
         )}
 

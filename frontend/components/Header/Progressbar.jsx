@@ -14,7 +14,7 @@ export default function ProgressBar({ progress }) {
         borderRadius={"30px"}
       >
         <Flex
-          h="17px"
+          h="18px"
           bg="#1f222e"
           borderColor={"#1f222e"}
           w={progress}

@@ -10,10 +10,10 @@ import {
 } from "@chakra-ui/react";
 
 export default function Minicard(props) {
-  const {title, number, icon} = props
+  const {title, number, icon, width, bg, proposal, votes} = props
   return (
     <>
-      <Card borderRadius="20" w="22%" minH="83px">
+      <Card borderRadius="20" width={width} minH="83px" bg={bg}>
         <CardBody>
           <Flex flexDirection="row" align="center" justify="center" w="100%">
             <Stat me="auto">
@@ -27,7 +27,7 @@ export default function Minicard(props) {
               </StatLabel>
               <Flex>
                 <StatNumber fontSize="lg" color={"gray.700"}>
-                  {number}
+                  {number}<br></br><strong>{proposal}</strong><br></br><i>{votes}</i>
                 </StatNumber>
               </Flex>
             </Stat>
@@ -37,7 +37,9 @@ export default function Minicard(props) {
               borderRadius={"12px"}
               h={"45px"}
               w={"45px"}
-              bg={"#e2e6f7"}
+              bg={"#1f222e"}
+              color="white"
+              size="50"
             >
               {icon}
             </Flex>

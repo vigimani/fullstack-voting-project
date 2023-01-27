@@ -15,7 +15,7 @@ export default function Layout({ children, isOwner, phase, setPhase }) {
         {isConnected ? (
           <>
             <Flex>
-              <Navbar phase={phase} setPhase={setPhase} />
+              <Navbar isOwner={isOwner} phase={phase} setPhase={setPhase} />
             </Flex>
             <Flex w="100%" direction="column" minHeight="100vh" mr="5px">
               <Flex w="100%" direction="column" h="100vh">
