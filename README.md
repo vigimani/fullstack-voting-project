@@ -27,7 +27,7 @@ Voici le déroulement de l'ensemble du processus de vote :
 
 ## Useful links
 * [Loom video presentation](https://www.loom.com/share/151f5dedfb3a4c0694fc5b497445b12b)
-* [Deployment link Vercel](https://verceldeploymentlink.fr)
+* [Deployment link Vercel](https://fullstack-voting-project-fm45zhm5k-vigimani.vercel.app/)
 * [Addresse etherscan du contract on Goerli](https://goerli.etherscan.io/address/0xbE7EEd06699192506a604ca071469D51B6EDE14a)
 
 ## Test coverage for Voting contract - projet 2 Alyra
