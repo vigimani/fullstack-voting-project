@@ -1,7 +1,9 @@
-import { Heading, Flex, Text, Progress } from "@chakra-ui/react";
+import { Heading, Flex, Text } from "@chakra-ui/react";
 import ProgressBar from "./Progressbar";
 import { wfstatus } from "../Utils/helper";
 
+//Header to the pane
+//Rendered by Layout
 export const Header = ({ isOwner, phase }) => {
   return (
     <Flex p="0.5rem" justifyContent={"space-between"}>

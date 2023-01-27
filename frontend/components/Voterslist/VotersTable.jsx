@@ -20,9 +20,8 @@ export default function VotersTable({
   voterslist,
   setVoterslist,
   listhasvoted,
-  isOwner
+  isOwner,
 }) {
-  //Set the adequate height for card
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -45,7 +44,7 @@ export default function VotersTable({
       overflowX={{ sm: "scroll", xl: "hidden" }}
     >
       <CardHeader w="100%" p="6px 0px 2px 0px">
-        {phase == 0 && isOwner? (
+        {phase == 0 && isOwner ? (
           <Addvoter setVoterslist={setVoterslist} />
         ) : (
           <Heading

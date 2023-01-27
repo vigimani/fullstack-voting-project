@@ -34,7 +34,7 @@ export function VotersTableRow(props) {
             p="3px 10px"
             borderRadius="8px"
           >
-            <AiFillCheckCircle size="25" color="green"/>{" "}
+            <AiFillCheckCircle size="25" color="green" />{" "}
           </Badge>
         </Td>
       ) : (

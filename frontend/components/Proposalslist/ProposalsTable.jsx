@@ -10,7 +10,7 @@ import {
   Thead,
   Tr,
   Spinner,
-  Heading
+  Heading,
 } from "@chakra-ui/react";
 import { ProposalsTableRow } from "./ProposalsTableRow";
 import Addproposal from "./Addproposal";
@@ -43,23 +43,22 @@ export default function ProposalsTable({
       overflowX={{ sm: "scroll", xl: "hidden" }}
     >
       <CardHeader w="100%" p="6px 0px 2px 0px">
-      {phase == 1 ? (
+        {phase == 1 ? (
           <Addproposal setProposalslist={setProposalslist} />
         ) : (
           <Heading
-          mt="1rem"
-          ml="4"
-          fontSize="xl"
-          color={"gray.700"}
-          fontWeight={"extrabold"}
-          mb="1rem"
-          as="h3"
-          size="lg"
-        >
-          List of Proposals
-        </Heading>
+            mt="1rem"
+            ml="4"
+            fontSize="xl"
+            color={"gray.700"}
+            fontWeight={"extrabold"}
+            mb="1rem"
+            as="h3"
+            size="lg"
+          >
+            List of Proposals
+          </Heading>
         )}
-
       </CardHeader>
       <CardBody>
         <Table variant="simple" color={"gray.700"}>

@@ -5,9 +5,10 @@ import ProposalsTable from "../Proposalslist/ProposalsTable";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
-import { useAccount, useProvider, useSigner } from "wagmi";
+import { useAccount, useProvider } from "wagmi";
 import Winningbando from "./Winningbando";
 
+//Renders the main dashboard 
 export default function Mainpanel({ isOwner, phase }) {
   const { isConnected } = useAccount();
   const provider = useProvider();
@@ -44,16 +45,14 @@ export default function Mainpanel({ isOwner, phase }) {
       getVoteEvent();
     });
     contract.on("WorkflowStatusChange", () => {
-        getWinningProposal();
-      
+      getWinningProposal();
     });
     return () => {
       contract.removeAllListeners();
     };
   }, []);
 
-  useEffect(() => {
-  }, [winningProposal]);
+  useEffect(() => {}, [winningProposal]);
 
   const getEvents = async () => {
     const contract = await new ethers.Contract(
@@ -128,14 +127,11 @@ export default function Mainpanel({ isOwner, phase }) {
   return (
     <>
       <Flex direction="column" alignItems="center" w="100%">
-        {
-          (phase ==
-            5 && winningProposal != undefined ? (
-              <Winningbando winningProposal={winningProposal} />
-            ) : (
-              ""
-            ))
-        }
+        {phase == 5 && winningProposal != undefined ? (
+          <Winningbando winningProposal={winningProposal} />
+        ) : (
+          ""
+        )}
         <DashFirstRow
           phase={phase}
           voterslist={voterslist}

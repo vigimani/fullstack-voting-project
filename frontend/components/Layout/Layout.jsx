@@ -6,6 +6,7 @@ import { Footer } from "../Footer/Footer";
 import Welcome from "../Welcome/Welcome";
 import { Separator } from "../Utils/Separator";
 
+//Base Layout of the app
 export default function Layout({ children, isOwner, phase, setPhase }) {
   const { isConnected } = useAccount();
 

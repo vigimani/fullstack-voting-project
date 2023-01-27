@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, Flex } from "@chakra-ui/react";
 
+//Component to display the progress of the workflow
+//Rendered by Header
 export default function ProgressBar({ progress }) {
   return (
     <Flex w="100%" direction="column" alignItems="center">

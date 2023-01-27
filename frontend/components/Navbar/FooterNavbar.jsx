@@ -59,7 +59,7 @@ export default function FooterNavBar({}) {
                     icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
                   />
                   <Menu>
-                    <MenuButton 
+                    <MenuButton
                       rounded="full"
                       boxShadow="dark-lg"
                       borderColor="#1f222e"
@@ -67,8 +67,8 @@ export default function FooterNavBar({}) {
                       px={"12px"}
                       py={"12px"}
                       h="48px"
-                        >
-                    <Icon w="20px" as={FaWallet} />
+                    >
+                      <Icon w="20px" as={FaWallet} />
                     </MenuButton>
                     <MenuList p="16px 8px">
                       <Flex flexDirection="column">

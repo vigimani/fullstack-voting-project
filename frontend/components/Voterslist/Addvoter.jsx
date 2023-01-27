@@ -1,11 +1,8 @@
-// Chakra imports
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
 import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
 import { useSigner } from "wagmi";
-
-//import for children
 import {
   Heading,
   Input,
@@ -24,11 +21,8 @@ import {
   DrawerCloseButton,
   FormLabel,
   DrawerFooter,
-  Collapse,
-  Box,
 } from "@chakra-ui/react";
 import { FaUser } from "react-icons/fa";
-
 import { ImUserPlus } from "react-icons/im";
 
 export default function Addvoter({ setVoterslist }) {
@@ -37,7 +31,6 @@ export default function Addvoter({ setVoterslist }) {
   const [isloading, setIsloading] = useState(false);
   const [newvoter, setNewvoter] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { isOpen, onToggle } = useDisclosure();
 
   const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS;
 
@@ -112,12 +105,8 @@ export default function Addvoter({ setVoterslist }) {
         >
           Add Voter
         </Button>
-        </Flex>
-      <Drawer
-        isOpen={isOpen}
-        placement="top"
-        onClose={onClose}
-      >
+      </Flex>
+      <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -156,23 +145,23 @@ export default function Addvoter({ setVoterslist }) {
               Cancel
             </Button>
             {!isloading ? (
-            <Button
-              color="white"
-              bg="#1f222e"
-              leftIcon={<ImUserPlus />}
-              mt="2"
-              borderRadius="10"
-              mr="4"
-              onClick={() => addAVoter()}
-            >
-              Submit
-            </Button>
-            ): (
-                <Button
+              <Button
+                color="white"
+                bg="#1f222e"
+                leftIcon={<ImUserPlus />}
+                mt="2"
+                borderRadius="10"
+                mr="4"
+                onClick={() => addAVoter()}
+              >
+                Submit
+              </Button>
+            ) : (
+              <Button
                 color="white"
                 bg="#1f222e"
                 isLoading
-                loadingText='Submitting'
+                loadingText="Submitting"
                 mt="2"
                 borderRadius="10"
                 mr="4"

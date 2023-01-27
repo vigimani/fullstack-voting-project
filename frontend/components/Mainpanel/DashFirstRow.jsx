@@ -3,33 +3,13 @@ import { Flex } from "@chakra-ui/react";
 import { FaBook, FaUser, FaWallet, FaVoteYea } from "react-icons/fa";
 import Minicard from "./Minicard";
 import { useAccount } from "wagmi";
-import {MdStars} from "react-icons/md"
 
 export default function DashFirstRow({
   voterslist,
   proposalslist,
   listhasvoted,
-  phase,
-  winningProposal
 }) {
   const { address } = useAccount();
-  const countVotes = (votes) => {
-    var i = -1;
-    var res = {};
-    while (votes[++i]) {
-      if (!res[votes[i]]) {
-        res[votes[i]] = 1;
-      } else {
-        var j = i - 1;
-        while (votes[++j]) {
-          if (votes[i] == votes[j]) {
-            res[votes[i]]++;
-          }
-        }
-      }
-    }
-    return res;
-  };
 
   return (
     <>
