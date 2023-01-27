@@ -2,14 +2,14 @@ import { Flex, Alert, AlertIcon, Heading, Text } from "@chakra-ui/react";
 import { MetamaskButton } from "../Utils/MetamaskButton";
 import HeaderNavbar from "../Navbar/HeaderNavbar";
 
-export default function Welcome({ children }) {
+export default function Welcome() {
   return (
     <>
-      <Flex mt="2rem" direction="column" w="100%" alignItems={"center"}>
+      <Flex mt="2rem" direction="column" w="100%" justifyContent={"space-between"}>
         <Flex
           bg="#e2e6f7"
           height="80vh"
-          width="75%"
+          width="100%"
           borderRadius="20px"
           justifyContent={"space-between"}
         >
@@ -41,7 +41,7 @@ export default function Welcome({ children }) {
               </Alert>
             </Flex>
           </Flex>
-          <Flex w="180px"></Flex>
+          <Flex w="350px"></Flex>
         </Flex>
       </Flex>
     </>
