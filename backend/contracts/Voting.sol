@@ -56,6 +56,10 @@ contract Voting is Ownable {
         return voters[_addr];
     }
     
+    /// @notice return proposal after given an id
+    /// @dev OnlyVoters can call this function
+    /// @param _id of the proposal
+    /// @return Proposal 
     function getOneProposal(uint _id) external onlyVoters view returns (Proposal memory) {
         return proposalsArray[_id];
     }
@@ -63,6 +67,9 @@ contract Voting is Ownable {
  
     // ::::::::::::: REGISTRATION ::::::::::::: // 
 
+    /// @notice add a new voter to the game
+    /// @dev OnlyOwner can call this function
+    /// @param _addr address of the wallet to add to the game
     function addVoter(address _addr) external onlyOwner {
         require(workflowStatus == WorkflowStatus.RegisteringVoters, 'Voters registration is not open yet');
         require(voters[_addr].isRegistered != true, 'Already registered');
