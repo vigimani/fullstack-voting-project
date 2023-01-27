@@ -24,7 +24,7 @@ export default function Home() {
 
   //Game ownership and workflow
   const [isOwner, setIsOwner] = useState(false);
-  const [phase, setPhase] = useState();
+  const [phase, setPhase] = useState(0);
 
   useEffect(() => {
     if (isConnected) {
