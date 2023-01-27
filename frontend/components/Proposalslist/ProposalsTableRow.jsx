@@ -13,7 +13,8 @@ import { useState } from "react";
 import { FaBook } from "react-icons/fa";
 import { useAccount, useSigner, useProvider } from "wagmi";
 import { ethers } from "ethers";
-import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
+// import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
+import { abi } from "../Utils/helper";
 
 export function ProposalsTableRow(props) {
   const [isloading, setIsloading] = useState(false);
@@ -28,7 +29,7 @@ export function ProposalsTableRow(props) {
     try {
       const contract = new ethers.Contract(
         contractAddress,
-        Contract.abi,
+        abi,
         signer
       );
       console.log(id);

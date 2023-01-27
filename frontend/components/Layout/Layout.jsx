@@ -1,5 +1,5 @@
 import { Navbar } from "../Navbar/Navbar";
-import { calc, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useAccount } from "wagmi";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";

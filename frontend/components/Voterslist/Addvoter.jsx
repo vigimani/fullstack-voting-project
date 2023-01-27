@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { ethers } from "ethers";
-import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
+// import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
+import { abi } from "../Utils/helper";
 import { useSigner } from "wagmi";
 import {
   Heading,
@@ -39,7 +40,7 @@ export default function Addvoter({ setVoterslist }) {
     try {
       const contract = await new ethers.Contract(
         contractAddress,
-        Contract.abi,
+        abi,
         signer
       );
       let x = await contract.addVoter(newvoter);

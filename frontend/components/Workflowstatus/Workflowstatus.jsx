@@ -17,7 +17,7 @@ import { ImNext } from "react-icons/im";
 import { ethers } from "ethers";
 import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
 import { useSigner } from "wagmi";
-import { wfstatus } from "../Utils/helper";
+import { wfstatus, abi } from "../Utils/helper";
 
 export const Workflowstatus = ({ isOwner, phase, setPhase }) => {
   const { data: signer } = useSigner();
@@ -26,7 +26,7 @@ export const Workflowstatus = ({ isOwner, phase, setPhase }) => {
   const nextphase = async () => {
     const contract = await new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       signer
     );
     switch (phase) {

@@ -4,9 +4,10 @@ import VotersTable from "../Voterslist/VotersTable";
 import ProposalsTable from "../Proposalslist/ProposalsTable";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
+// import Contract from "../../../backend/artifacts/contracts/Voting.sol/Voting";
 import { useAccount, useProvider } from "wagmi";
 import Winningbando from "./Winningbando";
+import { abi } from "../Utils/helper";
 
 //Renders the main dashboard 
 export default function Mainpanel({ isOwner, phase }) {
@@ -32,7 +33,7 @@ export default function Mainpanel({ isOwner, phase }) {
   useEffect(() => {
     const contract = new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       provider
     );
     contract.on("VoterRegistered", () => {
@@ -57,7 +58,7 @@ export default function Mainpanel({ isOwner, phase }) {
   const getEvents = async () => {
     const contract = await new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       provider
     );
     const filter = { address: contractAddress, fromBlock: 0 };
@@ -117,7 +118,7 @@ export default function Mainpanel({ isOwner, phase }) {
   const getWinningProposal = async () => {
     const contract = await new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       provider
     );
     let id = await contract.winningProposalID();

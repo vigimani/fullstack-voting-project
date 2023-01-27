@@ -6,6 +6,7 @@ import Contract from "../../backend/artifacts/contracts/Voting.sol/Voting";
 import { useAccount, useProvider } from "wagmi";
 import Layout from "@/components/Layout/Layout";
 import Mainpanel from "@/components/Mainpanel/Mainpanel";
+import { abi } from "@/components/Utils/helper";
 
 export default function Home() {
   //EthersJS and wagmi
@@ -48,7 +49,7 @@ export default function Home() {
   useEffect(() => {
     const contract = new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       provider
     );
     contract.on("WorkflowStatusChange", () => {
@@ -63,7 +64,7 @@ export default function Home() {
   const checkOwner = async () => {
     const contract = await new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       provider
     );
     let owner = await contract.owner();
@@ -78,7 +79,7 @@ export default function Home() {
   const getStatusOfTheGame = async () => {
     const contract = await new ethers.Contract(
       contractAddress,
-      Contract.abi,
+      abi,
       provider
     );
     const filter = { address: contractAddress, fromBlock: 0 };
