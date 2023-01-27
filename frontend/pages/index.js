@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useToast } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import Contract from "../../backend/artifacts/contracts/Voting.sol/Voting";
+// import Contract from "../../backend/artifacts/contracts/Voting.sol/Voting";
 import { useAccount, useProvider } from "wagmi";
 import Layout from "@/components/Layout/Layout";
 import Mainpanel from "@/components/Mainpanel/Mainpanel";
